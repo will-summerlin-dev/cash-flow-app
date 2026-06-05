@@ -1,0 +1,35 @@
+name: Update market CAGR data
+
+# Regenerates public/data/cagr/* from Zillow's latest CSVs and commits the
+# result. Runs monthly (Zillow refreshes its data monthly) and on demand.
+on:
+  schedule:
+    - cron: '0 6 5 * *' # 06:00 UTC on the 5th of each month
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Build CAGR data from Zillow
+        run: npm run build:data
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain public/data/cagr)" ]; then
+            git add public/data/cagr
+            git commit -m "chore(data): refresh ZIP rent/price CAGR from Zillow"
+            git push
+          else
+            echo "No data changes."
+          fi

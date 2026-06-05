@@ -1,0 +1,10 @@
+{
+  "source": "sample",
+  "sourceUrl": "https://www.zillow.com/research/data/",
+  "targetYears": 5,
+  "asOf": "2025-12",
+  "generatedAt": "2026-06-05T00:00:00.000Z",
+  "zipCount": 8,
+  "shardPrefixLength": 3,
+  "note": "Placeholder sample data. Run `npm run build:data` to generate real figures from Zillow."
+}
