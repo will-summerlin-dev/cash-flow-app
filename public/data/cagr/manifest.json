@@ -2,8 +2,8 @@
   "source": "Zillow ZORI + ZHVI",
   "sourceUrl": "https://www.zillow.com/research/data/",
   "targetYears": 5,
-  "asOf": "2026-07",
-  "generatedAt": "2026-09-05T09:55:39.432Z",
-  "zipCount": 26279,
+  "asOf": "2026-08",
+  "generatedAt": "2026-10-05T13:32:55.991Z",
+  "zipCount": 26280,
   "shardPrefixLength": 3
 }
